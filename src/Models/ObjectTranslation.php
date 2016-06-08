@@ -11,6 +11,6 @@ class ObjectTranslation extends BaseTranslation
      */
     public function owner()
     {
-        return $this->belongsTo('TypiCMS\Modules\Objects\Models\Object', 'object_id');
+        return $this->belongsTo('TypiCMS\Modules\Objects\Models\Object', 'object_id')->withoutGlobalScopes();
     }
 }

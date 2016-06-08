@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Objects\Models;
 
-use Dimsav\Translatable\Translatable;
+use TypiCMS\Modules\Core\Traits\Translatable;
 use Laracasts\Presenter\PresentableTrait;
 use TypiCMS\Modules\Core\Models\Base;
 use TypiCMS\Modules\History\Traits\Historable;
@@ -45,14 +45,6 @@ class Object extends Base
         'body',
     ];
 
-    protected $appends = ['status', 'title', 'thumb'];
+    protected $appends = ['thumb'];
 
-    /**
-     * Columns that are file.
-     *
-     * @var array
-     */
-    public $attachments = [
-        'image',
-    ];
 }
