@@ -14,7 +14,7 @@ class Object extends Base
     use Translatable;
 
     protected $presenter = 'TypiCMS\Modules\Objects\Presenters\ModulePresenter';
-    
+
     /**
      * Declare any properties that should be hidden from JSON Serialization.
      *
@@ -46,5 +46,15 @@ class Object extends Base
     ];
 
     protected $appends = ['thumb'];
+
+    /**
+     * Append thumb attribute.
+     *
+     * @return string
+     */
+    public function getThumbAttribute()
+    {
+        return $this->present()->thumbSrc(null, 22);
+    }
 
 }
