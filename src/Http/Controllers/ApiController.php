@@ -3,9 +3,9 @@
 namespace TypiCMS\Modules\Objects\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
-use TypiCMS\Modules\Objects\Models\Object;
-use TypiCMS\Modules\Objects\Repositories\ObjectInterface as Repository;
+use TypiCMS\Modules\Core\Custom\Http\Controllers\BaseApiController;
+use TypiCMS\Modules\Objects\Custom\Models\Object;
+use TypiCMS\Modules\Objects\Custom\Repositories\ObjectInterface as Repository;
 
 class ApiController extends BaseApiController
 {
@@ -56,7 +56,7 @@ class ApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \TypiCMS\Modules\Objects\Models\Object $object
+     * @param \TypiCMS\Modules\Objects\Custom\Models\Object $object
      *
      * @return \Illuminate\Http\JsonResponse
      */
