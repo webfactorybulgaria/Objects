@@ -2,10 +2,10 @@
 
 namespace TypiCMS\Modules\Objects\Http\Controllers;
 
-use TypiCMS\Modules\Core\Custom\Http\Controllers\BaseAdminController;
-use TypiCMS\Modules\Objects\Custom\Http\Requests\FormRequest;
-use TypiCMS\Modules\Objects\Custom\Models\Object;
-use TypiCMS\Modules\Objects\Custom\Repositories\ObjectInterface;
+use TypiCMS\Modules\Core\Shells\Http\Controllers\BaseAdminController;
+use TypiCMS\Modules\Objects\Shells\Http\Requests\FormRequest;
+use TypiCMS\Modules\Objects\Shells\Models\Object;
+use TypiCMS\Modules\Objects\Shells\Repositories\ObjectInterface;
 
 class AdminController extends BaseAdminController
 {
@@ -40,7 +40,7 @@ class AdminController extends BaseAdminController
     /**
      * Edit form for the specified resource.
      *
-     * @param \TypiCMS\Modules\Objects\Custom\Models\Object $object
+     * @param \TypiCMS\Modules\Objects\Shells\Models\Object $object
      *
      * @return \Illuminate\View\View
      */
@@ -53,7 +53,7 @@ class AdminController extends BaseAdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \TypiCMS\Modules\Objects\Custom\Http\Requests\FormRequest $request
+     * @param \TypiCMS\Modules\Objects\Shells\Http\Requests\FormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -67,8 +67,8 @@ class AdminController extends BaseAdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param \TypiCMS\Modules\Objects\Custom\Models\Object            $object
-     * @param \TypiCMS\Modules\Objects\Custom\Http\Requests\FormRequest $request
+     * @param \TypiCMS\Modules\Objects\Shells\Models\Object            $object
+     * @param \TypiCMS\Modules\Objects\Shells\Http\Requests\FormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
