@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Objects\Shells\Models;
 
-use TypiCMS\Modules\Objects\Models\Object as Base;
+use TypiCMS\Modules\Objects\Models\Object as BaseClass;
 
-class Object extends Base
+class Object extends BaseClass
 {
 
 }

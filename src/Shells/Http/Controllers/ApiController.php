@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Objects\Shells\Http\Controllers;
 
-use TypiCMS\Modules\Objects\Http\Controllers\ApiController as Base;
+use TypiCMS\Modules\Objects\Http\Controllers\ApiController as BaseClass;
 
-class ApiController extends Base
+class ApiController extends BaseClass
 {
 
 }
