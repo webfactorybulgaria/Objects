@@ -2,8 +2,8 @@
 
 namespace TypiCMS\Modules\Objects\Http\Controllers;
 
-use TypiCMS\Modules\Core\Http\Controllers\BasePublicController;
-use TypiCMS\Modules\Objects\Repositories\ObjectInterface;
+use TypiCMS\Modules\Core\Shells\Http\Controllers\BasePublicController;
+use TypiCMS\Modules\Objects\Shells\Repositories\ObjectInterface;
 
 class PublicController extends BasePublicController
 {

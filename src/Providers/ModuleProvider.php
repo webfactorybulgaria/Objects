@@ -5,14 +5,14 @@ namespace TypiCMS\Modules\Objects\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use TypiCMS\Modules\Core\Facades\TypiCMS;
-use TypiCMS\Modules\Core\Observers\FileObserver;
-use TypiCMS\Modules\Core\Observers\SlugObserver;
-use TypiCMS\Modules\Core\Services\Cache\LaravelCache;
-use TypiCMS\Modules\Objects\Models\Object;
-use TypiCMS\Modules\Objects\Models\ObjectTranslation;
-use TypiCMS\Modules\Objects\Repositories\CacheDecorator;
-use TypiCMS\Modules\Objects\Repositories\EloquentObject;
+use TypiCMS\Modules\Core\Shells\Facades\TypiCMS;
+use TypiCMS\Modules\Core\Shells\Observers\FileObserver;
+use TypiCMS\Modules\Core\Shells\Observers\SlugObserver;
+use TypiCMS\Modules\Core\Shells\Services\Cache\LaravelCache;
+use TypiCMS\Modules\Objects\Shells\Models\Object;
+use TypiCMS\Modules\Objects\Shells\Models\ObjectTranslation;
+use TypiCMS\Modules\Objects\Shells\Repositories\CacheDecorator;
+use TypiCMS\Modules\Objects\Shells\Repositories\EloquentObject;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -37,7 +37,7 @@ class ModuleProvider extends ServiceProvider
 
         AliasLoader::getInstance()->alias(
             'Objects',
-            'TypiCMS\Modules\Objects\Facades\Facade'
+            'TypiCMS\Modules\Objects\Shells\Facades\Facade'
         );
 
         // Observers
@@ -52,12 +52,12 @@ class ModuleProvider extends ServiceProvider
         /*
          * Register route service provider
          */
-        $app->register('TypiCMS\Modules\Objects\Providers\RouteServiceProvider');
+        $app->register('TypiCMS\Modules\Objects\Shells\Providers\RouteServiceProvider');
 
         /*
          * Sidebar view composer
          */
-        $app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Objects\Composers\SidebarViewComposer');
+        $app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Objects\Shells\Composers\SidebarViewComposer');
 
         /*
          * Add the page in the view.
@@ -66,7 +66,7 @@ class ModuleProvider extends ServiceProvider
             $view->page = TypiCMS::getPageLinkedToModule('objects');
         });
 
-        $app->bind('TypiCMS\Modules\Objects\Repositories\ObjectInterface', function (Application $app) {
+        $app->bind('TypiCMS\Modules\Objects\Shells\Repositories\ObjectInterface', function (Application $app) {
             $repository = new EloquentObject(new Object());
             if (!config('typicms.cache')) {
                 return $repository;

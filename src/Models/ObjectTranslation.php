@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Objects\Models;
 
-use TypiCMS\Modules\Core\Models\BaseTranslation;
+use TypiCMS\Modules\Core\Shells\Models\BaseTranslation;
 
 class ObjectTranslation extends BaseTranslation
 {
@@ -11,6 +11,6 @@ class ObjectTranslation extends BaseTranslation
      */
     public function owner()
     {
-        return $this->belongsTo('TypiCMS\Modules\Objects\Models\Object', 'object_id')->withoutGlobalScopes();
+        return $this->belongsTo('TypiCMS\Modules\Objects\Shells\Models\Object', 'object_id')->withoutGlobalScopes();
     }
 }
