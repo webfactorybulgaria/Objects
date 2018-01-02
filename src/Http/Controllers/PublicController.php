@@ -9,7 +9,7 @@ class PublicController extends BasePublicController
 {
     public function __construct(ObjectInterface $object)
     {
-        parent::__construct($object);
+        parent::__construct($object, 'objects');
     }
 
     /**
