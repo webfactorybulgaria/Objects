@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Objects\Providers;
 
-use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 use TypiCMS\Modules\Core\Shells\Facades\TypiCMS;
 use TypiCMS\Modules\Core\Shells\Providers\BaseRouteServiceProvider as ServiceProvider;
 
@@ -20,13 +20,11 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the routes for the application.
      *
-     * @param \Illuminate\Routing\Router $router
-     *
      * @return void
      */
-    public function map(Router $router)
+    public function map()
     {
-        $router->group(['namespace' => $this->namespace], function (Router $router) {
+        Route::group(['namespace' => $this->namespace], function () {
 
             /*
              * Front office routes
@@ -35,8 +33,8 @@ class RouteServiceProvider extends ServiceProvider
                 $options = $page->private ? ['middleware' => 'auth'] : [];
                 foreach (config('translatable.locales') as $lang) {
                     if ($page->translate($lang)->status && $uri = $page->uri($lang)) {
-                        $router->get($uri, $options + ['as' => $lang.'.objects', 'uses' => 'PublicController@index']);
-                        $router->get($uri.'/{slug}', $options + ['as' => $lang.'.objects.slug', 'uses' => 'PublicController@show']);
+                        Route::get($uri, $options + ['as' => $lang.'.objects', 'uses' => 'PublicController@index']);
+                        Route::get($uri.'/{slug}', $options + ['as' => $lang.'.objects.slug', 'uses' => 'PublicController@show']);
                     }
                 }
             }
@@ -44,18 +42,18 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * Admin routes
              */
-            $router->get('admin/objects', 'AdminController@index')->name('admin::index-objects');
-            $router->get('admin/objects/create', 'AdminController@create')->name('admin::create-object');
-            $router->get('admin/objects/{object}/edit', 'AdminController@edit')->name('admin::edit-object');
-            $router->post('admin/objects', 'AdminController@store')->name('admin::store-object');
-            $router->put('admin/objects/{object}', 'AdminController@update')->name('admin::update-object');
+            Route::get('admin/objects', 'AdminController@index')->name('admin::index-objects');
+            Route::get('admin/objects/create', 'AdminController@create')->name('admin::create-object');
+            Route::get('admin/objects/{object}/edit', 'AdminController@edit')->name('admin::edit-object');
+            Route::post('admin/objects', 'AdminController@store')->name('admin::store-object');
+            Route::put('admin/objects/{object}', 'AdminController@update')->name('admin::update-object');
 
             /*
              * API routes
              */
-            $router->get('api/objects', 'ApiController@index')->name('api::index-objects');
-            $router->put('api/objects/{object}', 'ApiController@update')->name('api::update-object');
-            $router->delete('api/objects/{object}', 'ApiController@destroy')->name('api::destroy-object');
+            Route::get('api/objects', 'ApiController@index')->name('api::index-objects');
+            Route::put('api/objects/{object}', 'ApiController@update')->name('api::update-object');
+            Route::delete('api/objects/{object}', 'ApiController@destroy')->name('api::destroy-object');
         });
     }
 }
